@@ -38,4 +38,3 @@ function sendTxn(start_key, size, sig) {
 }
 sendTxn(start_key, size, sig);
 timestamp = new Date().getTime();
-

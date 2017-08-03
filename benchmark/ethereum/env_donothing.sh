@@ -1,9 +1,10 @@
-ETH_HOME=/users/dinhtta/anh/blockchain-perf/benchmark/ethereum
+USER_NAME=hanrc
+ETH_HOME=/users/$USER_NAME/extstorage/blockbench/benchmark/ethereum
 HOSTS=$ETH_HOME/hosts
 CLIENTS=$ETH_HOME/clients
-ETH_DATA=/data/dinhtta/eth
+ETH_DATA=/data/hanrc/eth
 LOG_DIR=$ETH_HOME/donothing_donothing
-EXE_HOME=/users/dinhtta/anh/wangji_3/blockchain-perf/src/donothing
+EXE_HOME=$ETH_HOME/../../src/ycsb
 BENCHMARK=ycsb
 
 ##comment these out for smallbank
