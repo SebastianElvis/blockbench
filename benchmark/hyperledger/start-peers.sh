@@ -5,16 +5,16 @@ cd `dirname ${BASH_SOURCE-$0}`
 
 CONFIG=hl_consensus_$1".yaml"
 for peer in `cat $HOSTS`; do
-  scp $CONFIG $peer:$HL_SOURCE/consensus/pbft/config.yaml  
+  scp $CONFIG $peer:$HL_SOURCE/consensus/pbft/config.yaml
 done
 
 i=0
 for peer in `cat $HOSTS`; do
   if [[ $i -eq 0 ]]; then
-    ssh $peer . $HL_HOME/start-root.sh 
+    ssh -i ~/.ssh/mykey $peer . $HL_HOME/start-root.sh
     bpeer=$peer
   elif [[ $i -lt $1 ]]; then
-    ssh $peer . $HL_HOME/start-slave.sh $bpeer $i
+    ssh -i ~/.ssh/mykey $peer . $HL_HOME/start-slave.sh $bpeer $i
   fi
   let i=$i+1
 done
