@@ -1,4 +1,4 @@
-HL_HOME=/users/hanrc/extstorage/blockbench/benchmark/hyperledger
+HL_HOME=/users/hanrc/blockbench/benchmark/hyperledger
 HOSTS=$HL_HOME/hosts
 CLIENTS=$HL_HOME/clients
 HL_DATA=/data/hanrc
