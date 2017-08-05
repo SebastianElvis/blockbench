@@ -1,9 +1,9 @@
 HL_HOME=/users/hanrc/blockbench/benchmark/hyperledger
 HOSTS=$HL_HOME/hosts
 CLIENTS=$HL_HOME/clients
-HL_DATA=/data/hanrc
-HL_SOURCE=/users/hanrc/bin
-LOG_DIR=$HL_HOME/donothing_ycsb
+HL_DATA=/users/hanrc/hl_data
+HL_SOURCE=/users/hanrc/go/src/github.com/hyperledger/fabric
+LOG_DIR=$HL_HOME/donothing_donothingresults_1
 EXE_HOME=$HL_HOME/../../src/ycsb
 BENCHMARK=ycsb
 

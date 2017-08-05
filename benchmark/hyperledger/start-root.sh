@@ -1,7 +1,8 @@
 #!/bin/bash
 
-cd `dirname ${BASH_SOURCE-$0}`
-. env.sh
+#cd `dirname ${BASH_SOURCE-$0}`
+
+. /users/hanrc/blockbench/benchmark/hyperledger/env.sh
 
 export CORE_PEER_ID=vp0
 export CORE_PEER_ADDRESSAUTODETECT=true
@@ -13,4 +14,5 @@ export CORE_PBFT_GENERAL_MODE=batch
 
 rm -rf $CORE_PEER_FILE_SYSTEM_PATH
 mkdir -p $CORE_PEER_FILE_SYSTEM_PATH
-nohup $HL_SOURCE/peer node start > $HL_DATA/hl_log 2>&1 &
+#nohup $HL_SOURCE/build/bin/peer node start > $HL_DATA/hl_log 2>&1 &
+$HL_SOURCE/build/bin/peer node start

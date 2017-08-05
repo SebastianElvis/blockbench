@@ -1,0 +1,47 @@
+Stop peer/java/driver processes in HOSTS
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+Stop peer/java/driver processes in CLIENTS
+driver: no process found
+peer: no process found
+java: no process found
+Copying peers info to config.yaml...
+Copying peers info to config.yaml...
+Copying peers info to config.yaml...
+Copying peers info to config.yaml...
+SSH to peer  155.98.39.140
+Start root...
+SSH to peer  155.98.39.129
+Start slave...
+SSH to peer  155.98.39.128
+Start slave...
+SSH to peer  155.98.39.68
+Start slave...
+bpeer = 155.98.39.140
+Stop peer/java/driver processes in HOSTS
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+peer: no process found
+java: no process found
+driver: no process found
+Stop peer/java/driver processes in CLIENTS
+driver: no process found
+peer: no process found
+java: no process found
