@@ -1,4 +1,4 @@
-CC=g++
+C=g++
 CFLAGS=-std=c++11 -g -Wall -pthread -I./
 LDFLAGS= -lpthread -ltbb -lrestclient-cpp
 SUBDIRS=core db

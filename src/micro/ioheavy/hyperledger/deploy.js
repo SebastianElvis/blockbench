@@ -19,7 +19,7 @@ console.log(post_data);
 
 var post_options = {
     hostname: 'localhost',
-    port    : '7050',
+    port    : '7051',
     path    : '/chaincode',
     method  : 'POST',
     headers : {

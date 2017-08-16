@@ -1,0 +1,82 @@
+2017-08-10 14:50:07.974 MDT [nodeCmd] serve -> INFO 001[0m Starting peer:
+ Version: 1.0.1-snapshot-3abe144
+ Go version: go1.8.3
+ OS/Arch: linux/amd64
+ Chaincode:
+  Base Image Version: 0.3.1
+  Base Docker Namespace: hyperledger
+  Base Docker Label: org.hyperledger.fabric
+  Docker Namespace: hyperledger
+
+2017-08-10 14:50:07.974 MDT [ledgermgmt] initialize -> INFO 002[0m Initializing ledger mgmt
+2017-08-10 14:50:07.974 MDT [kvledger] NewProvider -> INFO 003[0m Initializing ledger provider
+panic: Error while trying to create dir if missing: mkdir /var/hyperledger: permission denied
+
+goroutine 1 [running]:
+github.com/hyperledger/fabric/common/ledger/util/leveldbhelper.(*DB).Open(0xc420331dc0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/common/ledger/util/leveldbhelper/leveldb_helper.go:84 +0x315
+github.com/hyperledger/fabric/core/ledger/kvledger.openIDStore(0xc420331d80, 0x36, 0x1)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/core/ledger/kvledger/kv_ledger_provider.go:267 +0x150
+github.com/hyperledger/fabric/core/ledger/kvledger.NewProvider(0xc319e0, 0x0, 0xc42034d3b0, 0x0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/core/ledger/kvledger/kv_ledger_provider.go:67 +0xf2
+github.com/hyperledger/fabric/core/ledger/ledgermgmt.initialize()
+	/users/hanrc/go/src/github.com/hyperledger/fabric/core/ledger/ledgermgmt/ledger_mgmt.go:59 +0x149
+github.com/hyperledger/fabric/core/ledger/ledgermgmt.Initialize.func1()
+	/users/hanrc/go/src/github.com/hyperledger/fabric/core/ledger/ledgermgmt/ledger_mgmt.go:49 +0x20
+sync.(*Once).Do(0x13d1ea8, 0xd7bb30)
+	/usr/lib/go-1.8/src/sync/once.go:44 +0xbe
+github.com/hyperledger/fabric/core/ledger/ledgermgmt.Initialize()
+	/users/hanrc/go/src/github.com/hyperledger/fabric/core/ledger/ledgermgmt/ledger_mgmt.go:50 +0x39
+github.com/hyperledger/fabric/peer/node.serve(0x13d1de0, 0x0, 0x0, 0x0, 0x0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/peer/node/start.go:88 +0x10e
+github.com/hyperledger/fabric/peer/node.glob..func1(0x1370840, 0x13d1de0, 0x0, 0x0, 0x0, 0x0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/peer/node/start.go:75 +0x3f
+github.com/hyperledger/fabric/vendor/github.com/spf13/cobra.(*Command).execute(0x1370840, 0x13d1de0, 0x0, 0x0, 0x1370840, 0x13d1de0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/vendor/github.com/spf13/cobra/command.go:599 +0x3e9
+github.com/hyperledger/fabric/vendor/github.com/spf13/cobra.(*Command).ExecuteC(0x1370ea0, 0xf, 0xc4202304a0, 0x7)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/vendor/github.com/spf13/cobra/command.go:689 +0x339
+github.com/hyperledger/fabric/vendor/github.com/spf13/cobra.(*Command).Execute(0x1370ea0, 0x42, 0xc4202304a0)
+	/users/hanrc/go/src/github.com/hyperledger/fabric/vendor/github.com/spf13/cobra/command.go:648 +0x2b
+main.main()
+	/users/hanrc/go/src/github.com/hyperledger/fabric/peer/main.go:118 +0x54d
+2017-08-10 14:50:51.331 MDT [nodeCmd] serve -> INFO 001[0m Starting peer:
+ Version: 1.0.1-snapshot-3abe144
+ Go version: go1.8.3
+ OS/Arch: linux/amd64
+ Chaincode:
+  Base Image Version: 0.3.1
+  Base Docker Namespace: hyperledger
+  Base Docker Label: org.hyperledger.fabric
+  Docker Namespace: hyperledger
+
+2017-08-10 14:50:51.331 MDT [ledgermgmt] initialize -> INFO 002[0m Initializing ledger mgmt
+2017-08-10 14:50:51.331 MDT [kvledger] NewProvider -> INFO 003[0m Initializing ledger provider
+2017-08-10 14:50:51.367 MDT [kvledger] NewProvider -> INFO 004[0m ledger provider Initialized
+2017-08-10 14:50:51.367 MDT [ledgermgmt] initialize -> INFO 005[0m ledger mgmt initialized
+2017-08-10 14:50:51.371 MDT [eventhub_producer] start -> INFO 006[0m Event processor started
+[33m2017-08-10 14:50:51.372 MDT [nodeCmd] createChaincodeServer -> WARN 007[0m peer.chaincodeListenAddress is not set, use peer.listenAddress 0.0.0.0:7051
+2017-08-10 14:50:51.373 MDT [chaincode] NewChaincodeSupport -> INFO 008[0m Chaincode support using peerAddress: 0.0.0.0:7051
+2017-08-10 14:50:51.373 MDT [sccapi] RegisterSysCC -> INFO 009[0m system chaincode cscc(github.com/hyperledger/fabric/core/scc/cscc) registered
+2017-08-10 14:50:51.374 MDT [sccapi] RegisterSysCC -> INFO 00a[0m system chaincode lscc(github.com/hyperledger/fabric/core/scc/lscc) registered
+2017-08-10 14:50:51.374 MDT [sccapi] RegisterSysCC -> INFO 00b[0m system chaincode escc(github.com/hyperledger/fabric/core/scc/escc) registered
+2017-08-10 14:50:51.374 MDT [sccapi] RegisterSysCC -> INFO 00c[0m system chaincode vscc(github.com/hyperledger/fabric/core/scc/vscc) registered
+2017-08-10 14:50:51.374 MDT [sccapi] RegisterSysCC -> INFO 00d[0m system chaincode qscc(github.com/hyperledger/fabric/core/chaincode/qscc) registered
+2017-08-10 14:50:51.375 MDT [gossip/service] func1 -> INFO 00e[0m Initialize gossip with endpoint 0.0.0.0:7051 and bootstrap set [127.0.0.1:7051]
+2017-08-10 14:50:51.375 MDT [msp] DeserializeIdentity -> INFO 00f[0m Obtaining identity
+2017-08-10 14:50:51.381 MDT [msp] DeserializeIdentity -> INFO 010[0m Obtaining identity
+2017-08-10 14:50:51.383 MDT [gossip/discovery] NewDiscoveryService -> INFO 011[0m Started { [] [67 181 12 96 5 25 105 52 159 240 246 1 207 206 198 61 171 79 237 138 206 88 106 82 134 166 193 46 100 156 71 90] 0.0.0.0:7051} incTime is 1502398251382908309
+2017-08-10 14:50:51.383 MDT [gossip/gossip] NewGossipService -> INFO 012[0m Creating gossip service with self membership of { [] [67 181 12 96 5 25 105 52 159 240 246 1 207 206 198 61 171 79 237 138 206 88 106 82 134 166 193 46 100 156 71 90] 0.0.0.0:7051}
+2017-08-10 14:50:51.383 MDT [msp] DeserializeIdentity -> INFO 013[0m Obtaining identity
+[33m2017-08-10 14:50:51.388 MDT [gossip/gossip] NewGossipService -> WARN 014[0m External endpoint is empty, peer will not be accessible outside of its organization
+2017-08-10 14:50:51.388 MDT [gossip/gossip] start -> INFO 015[0m Gossip instance 0.0.0.0:7051 started
+2017-08-10 14:50:51.389 MDT [cscc] Init -> INFO 016[0m Init CSCC
+2017-08-10 14:50:51.389 MDT [sccapi] deploySysCC -> INFO 017[0m system chaincode cscc/(github.com/hyperledger/fabric/core/scc/cscc) deployed
+2017-08-10 14:50:51.390 MDT [sccapi] deploySysCC -> INFO 018[0m system chaincode lscc/(github.com/hyperledger/fabric/core/scc/lscc) deployed
+2017-08-10 14:50:51.391 MDT [escc] Init -> INFO 019[0m Successfully initialized ESCC
+2017-08-10 14:50:51.391 MDT [sccapi] deploySysCC -> INFO 01a[0m system chaincode escc/(github.com/hyperledger/fabric/core/scc/escc) deployed
+2017-08-10 14:50:51.392 MDT [sccapi] deploySysCC -> INFO 01b[0m system chaincode vscc/(github.com/hyperledger/fabric/core/scc/vscc) deployed
+2017-08-10 14:50:51.393 MDT [qscc] Init -> INFO 01c[0m Init QSCC
+2017-08-10 14:50:51.393 MDT [sccapi] deploySysCC -> INFO 01d[0m system chaincode qscc/(github.com/hyperledger/fabric/core/chaincode/qscc) deployed
+2017-08-10 14:50:51.393 MDT [nodeCmd] initSysCCs -> INFO 01e[0m Deployed system chaincodess
+2017-08-10 14:50:51.393 MDT [nodeCmd] serve -> INFO 01f[0m Starting peer with ID=[name:"jdoe" ], network ID=[dev], address=[0.0.0.0:7051]
+2017-08-10 14:50:51.395 MDT [nodeCmd] serve -> INFO 020[0m Started peer with ID=[name:"jdoe" ], network ID=[dev], address=[0.0.0.0:7051]

@@ -4,10 +4,11 @@ cd `dirname ${BASH_SOURCE-$0}`
 . env.sh
 
 let i=0
-let K=$1/2
+#let K=$1/2
+let K=$1
 for client in `cat $CLIENTS`; do
   if [[ $i -lt $K ]]; then
-    echo $client index $i
+    echo "Client " $client "started, " $client index $i
     ssh -i ~/.ssh/mykey -oStrictHostKeyChecking=no $client $HL_HOME/start-clients.sh $3 $i $2 $4
   fi
   let i=$i+1

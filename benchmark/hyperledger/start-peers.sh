@@ -1,9 +1,9 @@
 #!/bin/bash
 #args: nnodes
 
-#cd `dirname ${BASH_SOURCE-$0}`
+cd `dirname ${BASH_SOURCE-$0}`
 
-source /users/hanrc/blockbench/benchmark/hyperledger/env.sh
+source ./env.sh
 
 CONFIG=hl_consensus_$1".yaml"
 for peer in `cat $HOSTS`; do
@@ -13,15 +13,15 @@ done
 
 i=0
 for peer in `cat $HOSTS`; do
-  echo "SSH to peer " $peer
+  #echo "SSH to peer " $peer
   if [[ $i -eq 0 ]]; then
-    echo "Start root..."
-    ssh -i ~/.ssh/mykey $peer . $HL_HOME/start-root.sh
-    bpeer=$peer
+    echo "Start root..." $peer
+    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-root.sh
+    orderer=$peer
+    echo "The orderer is " $orderer
   elif [[ $i -lt $1 ]]; then
-    echo "Start slave..."
-    ssh -i ~/.ssh/mykey $peer . $HL_HOME/start-slave.sh $bpeer $i
+    echo "Start slave..." $peer
+    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-slave.sh $orderer $i
   fi
   let i=$i+1
 done
-echo bpeer = $bpeer
