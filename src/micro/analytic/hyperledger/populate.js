@@ -42,7 +42,8 @@ function invoke(func, args) {
     "params": {
       "type": 1,
       "chaincodeID":{
-      "name":"4caae8cf2298bbcc8d3e1f8ef57ea1c7f0f78d1b6b96a93822666c8a9d39c3ddb97f3ea36a4b79ac303a1b9296510450a2516b75b0cc86183b7141a593d004bf"
+        "name":"4caae8cf2298bbcc8d3e1f8ef57ea1c7f0f78d1b6b96a93822666c8a9d39c3ddb97f3ea36a4b79ac303a1b9296510450a2516b75b0cc86183b7141a593d004bf"
+        //"name": "analytic"
       },
       "ctorMsg": {
         "function": func,
@@ -91,22 +92,24 @@ function poll_height() {
   };
 
   var req = http.request(get_height_options, function (res) {
-    // console.log('STATUS: ' + res.statusCode);
-    // console.log('HEADERS: ' + JSON.stringify(res.headers));
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
       height = JSON.parse(chunk).height;
+      console.log("Data received!");
+      console.log(chunk);
       if (height != last_height) {
         var now_time = new Date().getTime();
-        //console.log("timestamp: "+ now_time);
+        console.log("timestamp: "+ now_time);
         if (last_height != -1) {
-          //console.log("Latency: "+ ((now_time-last_time)/1000) + " sec");
+          console.log("Latency: "+ ((now_time-last_time)/1000) + " sec");
           ++target_block;
-        } else {
+        } else { //last_height == 1
           txn_count = 0;
           target_block = 1;
         }
-        //console.log("now hl blockchain tip height: " + (height-1));
+        console.log("now hl blockchain tip height: " + (height-1));
         if (txn_count < total_size) {
           for (var i = 0; i < batch_size; ++i) {
             var from = Math.round(zipfGenerator.next());
@@ -115,7 +118,7 @@ function poll_height() {
               from = Math.round(zipfGenerator.next());
               to = Math.round(zipfGenerator.next());
             }
-            // console.log(from, " - ",  to);
+            console.log("From:" + from, " - To:",  to);
             var val = Math.floor((Math.random() * 100) + 1);
             invoke("Send", [gen_acc(from), gen_acc(to), val.toString()]);
           }
@@ -123,7 +126,7 @@ function poll_height() {
           if (target_block % 1000 == 0) {
             console.log("commited " + target_block);
           }
-          // now_time = new Date().getTime();
+          now_time = new Date().getTime();
           txn_count += batch_size;
         } else {
           process.exit();
@@ -141,4 +144,4 @@ function poll_height() {
   req.end();
 }
 
-setInterval(poll_height, 100);
+setInterval(poll_height, 1000);

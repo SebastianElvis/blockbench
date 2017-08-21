@@ -17,7 +17,7 @@ def main():
         sys.exit(-1)
 
     path = sys.argv[1]
-
+    print "The log path is", path
     lines = [line.strip().split('\t') for line in open(path)]
 
     results = {}

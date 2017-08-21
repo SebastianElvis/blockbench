@@ -4,8 +4,8 @@ cd `dirname ${BASH_SOURCE-$0}`
 . env.sh
 
 let i=0
-#let K=$1/2
-let K=$1
+let K=$1/2
+#let K=$1
 for client in `cat $CLIENTS`; do
   if [[ $i -lt $K ]]; then
     echo "Client " $client "started, " $client index $i

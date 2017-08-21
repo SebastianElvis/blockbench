@@ -22,7 +22,8 @@ function get_max(block_num) {
     "params": {
       "type": 1,
       "chaincodeID":{
-      "name":"4caae8cf2298bbcc8d3e1f8ef57ea1c7f0f78d1b6b96a93822666c8a9d39c3ddb97f3ea36a4b79ac303a1b9296510450a2516b75b0cc86183b7141a593d004bf"
+        "name":"4caae8cf2298bbcc8d3e1f8ef57ea1c7f0f78d1b6b96a93822666c8a9d39c3ddb97f3ea36a4b79ac303a1b9296510450a2516b75b0cc86183b7141a593d004bf"
+        //"name": "analytic"
       },
       "ctorMsg": {
         "function":"QueryBlock",
@@ -46,7 +47,9 @@ function get_max(block_num) {
   var post_req = http.request(post_options, function (res) {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
-      ret = JSON.parse(JSON.parse(chunk)["result"]["message"]);
+      var chunk_json = JSON.parse(chunk);
+      console.log(chunk_json);
+      ret = JSON.parse(chunk_json["result"]["message"]);
       for (var i in ret) {
         max = max > ret[i]["Val"] ? max : ret[i]["Val"];
       }

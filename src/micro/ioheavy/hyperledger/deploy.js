@@ -6,7 +6,8 @@ var post_data = JSON.stringify({
   "params": {
     "type": 1,
     "chaincodeID":{
-      "path":"https://github.com/ijingo/chaincode-test/io"
+      //"path":"https://github.com/ijingo/chaincode-test/io"
+      "path": "https://github.com/SebastianElvis/blockbench/benchmark/contracts/hyperledger/go/io"
     },
     "ctorMsg": {
       "args":["init"]
@@ -19,7 +20,7 @@ console.log(post_data);
 
 var post_options = {
     hostname: 'localhost',
-    port    : '7051',
+    port    : '7050',
     path    : '/chaincode',
     method  : 'POST',
     headers : {
