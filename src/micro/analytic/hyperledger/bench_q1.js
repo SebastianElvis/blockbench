@@ -22,7 +22,7 @@ function get_max(block_num) {
     "params": {
       "type": 1,
       "chaincodeID":{
-        "name":"4caae8cf2298bbcc8d3e1f8ef57ea1c7f0f78d1b6b96a93822666c8a9d39c3ddb97f3ea36a4b79ac303a1b9296510450a2516b75b0cc86183b7141a593d004bf"
+        "name":"4a9d69aad0a1a3587934d5de13c0c8721e2674b33e255210036f6c110f8a41380dae8b26cdc09e5042cb3e21db305c91e470ca65c571add3e6161922ad0ea18b"
         //"name": "analytic"
       },
       "ctorMsg": {

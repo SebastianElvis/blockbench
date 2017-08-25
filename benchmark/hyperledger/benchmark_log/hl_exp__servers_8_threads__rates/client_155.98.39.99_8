@@ -1,0 +1,8 @@
+Usage: ./driver [options]
+Options:
+  -threads n: execute using n threads (default: 1)
+  -wt deploytime: waiting time in second before start to submit transactions for deployment the smart contract/chaincode
+  -db dbname: specify the name of the DB to use (e.g., hyperledger)
+  -wl workload: specify the type of smart contract to run (choices: ycsb, donothing, smallbank. By default: donothing)
+  -P propertyfile: load properties from the given file. Multiple files can
+                   be specified, and will be processed in the order specified

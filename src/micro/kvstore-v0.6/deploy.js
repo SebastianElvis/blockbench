@@ -6,7 +6,7 @@ var post_data = JSON.stringify({
   "params": {
     "type": 1,
     "chaincodeID":{
-      "path": "https://github.com/SebastianElvis/chaincode-test/analytic"
+      "path": "https://github.com/SebastianElvis/chaincode-test/kvstore-v0.6"
     },
     "ctorMsg": {
       "function":"Init",

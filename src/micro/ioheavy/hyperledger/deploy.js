@@ -6,8 +6,8 @@ var post_data = JSON.stringify({
   "params": {
     "type": 1,
     "chaincodeID":{
-      //"path":"https://github.com/ijingo/chaincode-test/io"
-      "path": "https://github.com/SebastianElvis/blockbench/benchmark/contracts/hyperledger/go/io"
+      "path": "https://github.com/SebastianElvis/chaincode-test/io",
+      "name": "io"
     },
     "ctorMsg": {
       "args":["init"]

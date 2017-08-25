@@ -16,12 +16,12 @@ for peer in `cat $HOSTS`; do
   #echo "SSH to peer " $peer
   if [[ $i -eq 0 ]]; then
     echo "Start root..." $peer
-    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-root.sh
+    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-root.sh $peer
     orderer=$peer
     echo "The orderer is " $orderer
   elif [[ $i -lt $1 ]]; then
     echo "Start slave..." $peer
-    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-slave.sh $orderer $i
+    ssh -i ~/.ssh/mykey $peer bash $HL_HOME/start-slave.sh $orderer $i $peer
   fi
   let i=$i+1
 done

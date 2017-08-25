@@ -16,4 +16,4 @@ export CORE_PBFT_GENERAL_MODE=batch
 rm -rf $CORE_PEER_FILE_SYSTEM_PATH
 mkdir -p $CORE_PEER_FILE_SYSTEM_PATH
 cd $HL_SOURCE/build/bin
-nohup ./peer node start > $HL_DATA/hl_log 2>&1 &
+nohup ./peer node start > $HL_DATA/hl_log_$3 2>&1 &

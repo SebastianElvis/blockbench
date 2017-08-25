@@ -1,7 +1,11 @@
 var http = require('http');
 const batch_size = 20000;
+
 var total_size = parseInt(process.argv[3]);
 
+var chaincode_name = "f244e9b16fb29d1edd6ca9ebdedab98dc891413b6d0196de9d5c7e380917d8b683c427551a71de5f73701ff8347518f7be8e996b00e3a030e4ce162d743b5c14";
+//var chaincode_name = "io";
+// to query the block of a height
 function poll_block(height) {
 
   var get_options = {
@@ -28,14 +32,15 @@ function poll_block(height) {
   req.end();
 }
 
-function send_txn(star_key, batch_size) {
+// invoke the write() function in the chaincode
+function send_txn(start_key, batch_size) {
   var post_data = JSON.stringify({
     "jsonrpc": "2.0",
     "method": "invoke",
     "params": {
       "type": 1,
       "chaincodeID":{
-        "name":"e1ba39e79f34d2bb41f195a9346bf993a09f87b35b60ead364d5ce7054e68857ad8703080f708d43afe7d645c1db1842bf9ed86df788fd52a35372194e827a9f"
+        "name": chaincode_name
       },
       "ctorMsg": {
         "function":"write",
@@ -59,15 +64,15 @@ function send_txn(star_key, batch_size) {
   };
 
   var post_req = http.request(post_options, function (res) {
-    // console.log('STATUS: ' + res.statusCode);
-    // console.log('HEADERS: ' + JSON.stringify(res.headers));
+    console.log('STATUS: ' + res.statusCode);
+    console.log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
-    /*
+    
     res.on('data', function (chunk) {
       console.log("timestamp: "+(new Date().getTime()));
       console.log('Response: ', chunk);
     });
-    */
+    
   });
 
   post_req.on('error', function(e) {
@@ -82,6 +87,8 @@ var last_height = -1;
 var last_time = -1;
 var start_key;
 
+
+
 function poll_height() {
 
   var get_height_options = {
@@ -95,18 +102,20 @@ function poll_height() {
   };
 
   var req = http.request(get_height_options, function (res) {
-    // console.log('STATUS: ' + res.statusCode);
-    // console.log('HEADERS: ' + JSON.stringify(res.headers));
+    //console.log('STATUS: ' + res.statusCode);
+    //console.log('HEADERS: ' + JSON.stringify(res.headers));
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
       height = JSON.parse(chunk).height;
       if (height != last_height) {
+        console.log("height != last_height");
+        console.log("height = " + height + "\nlast_height = " + last_height); 
         var now_time = new Date().getTime();
-        //console.log("timestamp: "+ now_time);
+        console.log("timestamp: "+ now_time);
         if (last_height != -1) {
           console.log("Latency: "+ ((now_time-last_time)/1000) + " sec");
           start_key += batch_size;
-        } else {
+        } else { // last_height == -1
           start_key = parseInt(process.argv[2]);
         }
         //poll_block(height-1);
@@ -120,6 +129,9 @@ function poll_height() {
         }
         last_height = height;
         last_time = now_time;
+      }else {
+        console.log("height == last_height");
+        console.log("height = " + height + "\nlast_height = " + last_height);
       }
     });
   });
@@ -131,4 +143,5 @@ function poll_height() {
   req.end();
 }
 
-setInterval(poll_height, 100);
+//setInterval(poll_height, 100);
+send_txn(parseInt(process.argv[2]), parseInt(process.argv[3]));

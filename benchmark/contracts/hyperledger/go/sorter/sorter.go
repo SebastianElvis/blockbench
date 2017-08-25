@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
-
+	"time"
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
@@ -61,7 +61,9 @@ func (t *Sorter) Invoke(stub shim.ChaincodeStubInterface, function string, args 
 		for i := 0; i < len(slice); i++ {
 			slice[i] = num - i
 		}
+		var ts = time.Now().Unix()
 		quicksort(slice, 0, num)
+		ts = time.Now().Unix() - ts
 		stub.PutState("num", []byte(args[0]))
 		return nil, nil
 	}
